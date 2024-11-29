@@ -1,0 +1,47 @@
+Iniciar el servidor de Express dentro de un nuevo proyecto:
+--------------------------------------------------------------
+
+//Este comando inicializa nuestro 'package.json' de inicio de proyecto.
+1) npm init -y
+
+//instalar la dependencia de express dentro de nuestra carpeta
+2) npm i express
+
+//luego instalamos dependencias especificas de desarrollo 
+// nodemon: permite actualizar los cambios del servidor sin reiniciar la maquina
+// morgan: permite controlar que esta pasando en el servidor
+// la D mayuscula permite que las librerias quedenmarcadas en las dependencias del 'package.json'
+3) npm i -D nodemon morgan
+
+4) realizar cambios en la configuracion del 'package.json'para que reconozca a nodemon en el Desarrollo (Dev)
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js --watch"
+  },
+
+5) node apunta al archivo index el cual se va a utilizar para partir la aplicacion
+
+6) levantar el servidor con el comando: npm run dev
+--------------------------------------------------------------
+nota1: si aparece el siguiente mensaje de error en windows:
+
+npm : No se puede cargar el archivo C:\Program Files\nodejs\npm.ps1 porque la ejecución de scripts está deshabilitada en este sistema. Para 
+obtener más información, consulta el tema about_Execution_Policies en https:/go.microsoft.com/fwlink/?LinkID=135170.
+En línea: 1 Carácter: 1
++ npm init -y
++ ~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+--------------------------------------------------------------
+Se debe ejecutar los siguiente en Powershell:
+
+a) Busca "PowerShell" en el menú de inicio, haz clic derecho y selecciona "Ejecutar como administrador".
+b) Ejecuta el siguiente comando en la ventana de PowerShell: Set-ExecutionPolicy RemoteSigned
+
+--------------------------------------------------------------
+nota2:
+Nodemon: Es una herramienta que reinicia automáticamente tu aplicación Node.js cuando detecta cambios en los archivos. Esto es muy útil durante el desarrollo, ya que ahorra tiempo al no tener que reiniciar manualmente el servidor.
+
+Morgan: Es un middleware para Node.js que registra las solicitudes HTTP en la consola. Esto te ayuda a depurar y entender mejor cómo se están utilizando tus rutas.
+
